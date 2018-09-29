@@ -9,14 +9,6 @@ dal = {
     5: "Chana Masala"
 }
 
-rice = {
-    0: "Onion Rice",
-    1: "Chinese Rice",
-    2: "Soyabean Rice",
-    3: "Tomato Rice",
-    4: "Plain Rice"
-}
-
 sabzi = {
     0: "Hari Kaddu",
     1: "Besan Pyaaz Pakoda",
