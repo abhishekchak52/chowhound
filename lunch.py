@@ -1,28 +1,28 @@
 # Save different parts of the lunch meal in ascending order of preference [lower is better] only for testing purposes
 
 dal = { 
-    0: "Arhar",
-    1: "Masoor",
-    2: "Moong",
-    3: "Dal Fry",
-    4: "Dal Tadka",
-    5: "Chana Masala"
+    "Arhar" :0,
+    "Masoor" :1,
+    "Moong": 2,
+    "Dal Fry":3,
+    "Dal Tadka":4 ,
+    "Chana Masala":5
 }
 
 sabzi = {
-    0: "Hari Kaddu",
-    1: "Besan Pyaaz Pakoda",
-    2: "Alu Gobhi",
-    3: "Bhindi Masala",
-    4: "Lauki Sabzi",
-    5: "Alu Matar",
-    6: "Alu Pata Gobhi",
-    7: "Baingan"
+    "Hari Kaddu":0,
+    "Besan Pyaaz Pakoda":1,
+    "Alu Gobhi":2,
+    "Bhindi Masala":3,
+    "Lauki Sabzi":4,
+    "Alu Matar":5,
+    "Alu Pata Gobhi":6,
+    "Baingan":7
 }
 
 sweets = {
-    0: "Fruit Chat",
-    1: "Papaya",
-    2: "Banana",
-    3: "Apple"
+    "Fruit Chat":0,
+    "Papaya":1,
+    "Banana":2,
+    "Apple":3
 }
