@@ -13,7 +13,8 @@ def serve():
     return menu
 
 def est_waste(menu):
-    return sigmoid(dals[menu['dal']] + 2*sabzis[menu['sabzi']] + sweets[menu['sweet']] - 10)
+    x = dals[menu['dal']] + 2*sabzis[menu['sabzi']] + sweets[menu['sweet']] - 10
+    return np.round(sigmoid(x),2) if x < -1 else 0.26
 
 if __name__=='__main__':
     for _ in range(20):
