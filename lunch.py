@@ -1,6 +1,6 @@
 # Save different parts of the lunch meal in ascending order of preference [lower is better] only for testing purposes
 
-dal = { 
+dals = { 
     "Arhar" :0,
     "Masoor" :1,
     "Moong": 2,
@@ -9,7 +9,7 @@ dal = {
     "Chana Masala":5
 }
 
-sabzi = {
+sabzis = {
     "Hari Kaddu":0,
     "Besan Pyaaz Pakoda":1,
     "Alu Gobhi":2,
