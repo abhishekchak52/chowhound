@@ -1,6 +1,7 @@
 <h1>ChowHound</h1>
 
 <form action="/submit" method="post">
+% print(suggested)
     Dal: <select name="Dal">
         % for dal in dals:
         <option value="{{dal}}" 
