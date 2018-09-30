@@ -6,9 +6,9 @@ from web_app_policy import *
 
 @route('/')
 def home():
-    training_model, prediction_model = load_models()
-    generated_menu = generate_menu(prediction_model.predict(input_vec(serve())))
-    print(generated_menu)
+#     training_model, prediction_model = load_models()
+#     generated_menu = generate_menu(prediction_model.predict(input_vec(serve())))
+#     print(generated_menu)
     return '<a href="/submit"> Click here to go to form </a>'
 
 

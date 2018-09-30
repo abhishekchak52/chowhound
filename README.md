@@ -8,4 +8,4 @@ Our project uses a neural network in a reinforcement learning setup. It receives
 
 The mess is simulated as in artificial environment which assumes the food wastage as some function of how popular a particular item is. The neural net learns using policy gradients and seems to converge on the wastage function quite quickly. 
 
-For the future prospects of this project, we want to deploy this application as a web app with visualizations. 
+For the future prospects of this project, we want to deploy this application as a web app with visualizations.  

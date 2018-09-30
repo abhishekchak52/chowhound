@@ -21,7 +21,7 @@ def generate_menu(vec):
 
 
 def est_waste(menu):
-    x = dals[menu['dal']] + 2*sabzis[menu['sabzi']] + sweets[menu['sweet']] - 10
+    x = dals[menu['dal']] + 2*sabzis[menu['sabzi']] + 0.1*sweets[menu['sweet']] - 10
     return np.round(sigmoid(x),2)+0.01 if x < -2 else 0.26
 
 def input_vec(menu):
@@ -36,9 +36,3 @@ if __name__=='__main__':
     print(menu)
     print(est_waste(menu))
     print(input_vec(menu))
-
-
-
-
-    
-

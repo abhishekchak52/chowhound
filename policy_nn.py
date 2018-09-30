@@ -5,7 +5,7 @@ from mess_env import serve, est_waste, input_vec, generate_menu, sigmoid
 from lunch import dals, sabzis, sweets
 
 import keras.layers as layers
-from keras.models import Model
+from keras.models import Model, load_model
 from keras.optimizers import Adam
 import keras.backend as K
 from keras.initializers import glorot_normal
@@ -17,17 +17,21 @@ def make_policy_model(hidden_layer_neurons, lr):
     num_outputs = len(items_list) + 1 # All food items plus wastage
     inp = layers.Input(shape=np.array(items_list).shape, name='Inputs')
     adv = layers.Input(shape=[1], name='Advantages')
-    x = layers.Dense(hidden_layer_neurons,
+    x1 = layers.Dense(hidden_layer_neurons,
                     activation='relu',
                     use_bias = False,
                     kernel_initializer=glorot_normal(seed=0),
-                    name="Hidden")(inp)
+                    name="Hidden1")(inp)
+    x2 = layers.Dense(hidden_layer_neurons,
+                    activation='relu',
+                    use_bias = False,
+                    kernel_initializer=glorot_normal(seed=0),
+                    name="Hidden2")(x1)
     out = layers.Dense(num_outputs,
                     activation='relu',
                     use_bias = False,
                     kernel_initializer=glorot_normal(seed=0),
-                    name="Out")(x)
-
+                    name="Out")(x2)
     model_train = Model(inputs=[inp,adv], outputs=[out])
     model_train.compile(loss='mean_squared_error', optimizer=Adam(lr))
     model_predict = Model(inputs=[inp], outputs=out)
@@ -87,7 +91,7 @@ def run_model(num_weeks=10):
         suggested_menu = generate_menu(action[:-1])
         waste = est_waste(suggested_menu)
     #     reward = 1/(sigmoid(waste)+0.01)
-        reward_sum += 1/waste
+        reward = 1/waste
         reward_sum += reward
         rewards = np.vstack([rewards, reward])
 
@@ -108,11 +112,9 @@ def run_model(num_weeks=10):
             discounted_rewards = np.empty(0).reshape(0,1)
             
         if (day + 1) % print_every == 0:
-            score = score_model(prediction_model,20)
+            score = score_model(prediction_model,50)
             scores.append(score)
 
-    prediction_model.save('predict.h5')
-    training_model.save('training.h5')
     return losses, scores
 
 if __name__=='__main__':
@@ -123,12 +125,27 @@ if __name__=='__main__':
     gamma = .99
     print_every = 14
     batch_size = 7
+
     num_weeks = 10
     lr = 1e-2
     goal = 0.15
  
-    losses, scores = run_model(1000)
-    plt.plot(scores)
-    plt.show()
+    losses, scores = run_model(500)
+    plt.clf()
+    plt.plot(losses)
+    plt.savefig('losses.png')
+    
+    meal = serve()
+    state = np.reshape(input_vec(meal),[1,num_inputs])
+    prediction_model = load_model('predict.h5')
+    prediction_model.compile(loss='mean_squared_error', optimizer=Adam(lr))
+    predicted = prediction_model.predict(state)[0]
+    
+    food = generate_menu(predicted[:-1])
+    print(meal)
+    print( food)
+    print(predicted[-1])
+    print(est_waste(meal))
+
     
 
