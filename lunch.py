@@ -26,3 +26,9 @@ sweets = {
     "Banana":2,
     "Apple":3
 }
+
+dals_list = [ "Arhar" , "Masoor" , "Moong", "Dal Fry", "Dal Tadka", "Chana Masala"] 
+sabzis_list = ["Hari Kaddu", "Besan Pyaaz Pakoda", "Alu Gobhi", "Bhindi Masala", "Lauki Sabzi", "Alu Matar", "Alu Pata Gobhi", "Baingan"]
+sweets_list = ["Fruit Chat", "Papaya", "Banana", "Apple"]
+
+items_list = dals_list + sabzis_list + sweets_list
