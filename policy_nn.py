@@ -28,11 +28,6 @@ def make_policy_model(hidden_layer_neurons, lr):
                     kernel_initializer=glorot_normal(seed=0),
                     name="Out")(x)
 
-    def custom_loss(y_true, y_pred):
-        # These are both vectors
-        log_lik = K.log(1+y_pred[-1]) + K.log(y_true[-1] * (y_true[-1] - y_pred[-1]) + (1 - y_true[-1]) * (y_true[-1] + y_pred[-1]))
-        return K.mean(log_lik * adv, keepdims=True)
-
     model_train = Model(inputs=[inp,adv], outputs=[out])
     model_train.compile(loss='mean_squared_error', optimizer=Adam(lr))
     model_predict = Model(inputs=[inp], outputs=out)
@@ -116,6 +111,8 @@ def run_model(num_weeks=10):
             score = score_model(prediction_model,20)
             scores.append(score)
 
+    prediction_model.save('predict.h5')
+    training_model.save('training.h5')
     return losses, scores
 
 if __name__=='__main__':
@@ -133,4 +130,5 @@ if __name__=='__main__':
     losses, scores = run_model(1000)
     plt.plot(scores)
     plt.show()
+    
 
