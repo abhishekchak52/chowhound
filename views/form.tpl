@@ -1,22 +1,30 @@
+<h1>ChowHound</h1>
+
 <form action="/submit" method="post">
     Dal: <select name="Dal">
         % for dal in dals:
         <option value="{{dal}}" 
-        % 'selected' if dal in suggested else ''
+        % if dal == suggested[0]:
+            selected
+        %end
         > {{dal}}</option>
         % end
         </select>
     Sabzi: <select name="Sabzi">
         % for sabzi in sabzis:
         <option value="{{sabzi}}" 
-        % 'selected' if sabzi in suggested else ''
+        % if sabzi == suggested[1]:
+            selected
+        %end
         > {{sabzi}}</option>
         % end
         </select>
     Sweets: <select name="Sweets">
         % for sweet in sweets:
         <option value="{{sweet}}" 
-        % 'selected' if sweet in suggested else ''
+        % if sweet == suggested[2]:
+            selected
+        %end
         > {{sweet}}</option>
         % end
         </select>
