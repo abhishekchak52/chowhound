@@ -9,6 +9,7 @@ tensorflow = "*"
 keras = "*"
 tqdm = "*"
 matplotlib = "*"
+bottle = "*"
 
 [dev-packages]
 
